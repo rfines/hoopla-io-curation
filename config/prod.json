@@ -1,0 +1,13 @@
+{
+  "development" : false,
+  "hooplaUrl" : "https://dashboard.hoopla.io/",
+  "baseUrl":"http://www.localruckus.com/",
+  "apiUrl" : "http://api.hoopla.io/",
+  "cloudinary" : {
+    "cloudName" : "hu3y2dnvf"
+  },
+  "googleAnalytics" : {
+    "code" : "UA-26299789-1"
+  },  
+  "robotsFile" : "prod.robots.hbs"  
+}

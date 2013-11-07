@@ -1,0 +1,10 @@
+{
+  "development" : false,
+  "hooplaUrl" : "https://dashboard-stage.hoopla.io/",
+  "baseUrl":"http://stage.localruckus.com",
+  "apiUrl" : "http://api-stage.hoopla.io",
+  "cloudinary" : {
+    "cloudName" : "hu9ncnicw"
+  },
+  "robotsFile" : "stage.robots.hbs"  
+}
