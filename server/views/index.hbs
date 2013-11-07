@@ -5,17 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/client/images/favicon.png">
+    <link rel="shortcut icon" href="/client/images/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/client/stylesheets/app.css">
     <script src="/client/javascripts/vendor.js"></script>
-    <script src="/client/javascripts/app.js"></script>
-    <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "c9e6f8c4-0e4d-4366-984e-82d83ff9381f"});</script><script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "c9e6f8c4-0e4d-4366-984e-82d83ff9381f"});</script>  
+    <script src="/client/javascripts/app.js"></script>  
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -32,7 +27,6 @@
       {{/if}}
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>  
       <script>
-        window.facebookClientId = "{{facebookClientId}}";
         $.cloudinary.config({ cloud_name: '{{cloudinary.cloudName}}'});
         window.baseUrl = "{{baseUrl}}";
       </script>
@@ -45,13 +39,6 @@
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-      </script>    
-      <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
-      <style type="text/css" media="screen, projection">
-        @import url(http://assets.freshdesk.com/widget/freshwidget.css); 
-      </style> 
-      <script type="text/javascript">
-        FreshWidget.init("", {"queryString": "&widgetType=popup", "widgetType": "popup", "buttonText": "Feedback", "buttonColor": "white", "buttonBg": "#afc70e", "backgroundImage": "", "alignment": "4", "offset": "350px", "formHeight": "500px", "url": "http://localruckus.freshdesk.com"} );
-      </script>      
+      </script>          
   </body>
 </html>
