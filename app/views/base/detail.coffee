@@ -1,5 +1,4 @@
 View = require 'views/base/view'
-ShareThis = require 'views/shareThis'
 
 module.exports = class Detail extends View
   autoRender: false
@@ -15,8 +14,7 @@ module.exports = class Detail extends View
 
   attach: =>
     super()
-    @publishEvent 'adjustTitle', "#{@model.get('name')} - Local Ruckus - Do the Local Thing"
-    @subview('shareThis', new ShareThis({container: '.shareIcons'}))   
+    @publishEvent 'adjustTitle', "#{@model.get('name')} - Hoopla Io Curation Interface" 
     @initMap()
 
   initMap: =>   
