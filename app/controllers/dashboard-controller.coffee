@@ -1,7 +1,11 @@
 Controller = require 'controllers/base/controller'
-EventListView = require 'views/event/eventList'
+Interface = require 'views/event/interface'
 Events = require 'models/events'
-module.exports = class DashboardController extends Controller
-
+SiteView = require 'views/site-view'
+HeaderView = require 'views/header'
+module.exports = class DashboardController extends Chaplin.Controller
+  beforeAction: ->
+    @compose 'site', SiteView
+    @compose 'header', HeaderView
   index: ->
-    @view = new EventListView({region: 'main', collection:new Events()})
+    @view = new Interface({region:'main', autoRender:true})

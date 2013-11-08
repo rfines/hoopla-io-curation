@@ -3,4 +3,4 @@ Event = require('models/event')
 
 module.exports = class Events extends Collection
   model : Event
-  url: "/api/curation/event"
+  url: "/api/curate/event"
