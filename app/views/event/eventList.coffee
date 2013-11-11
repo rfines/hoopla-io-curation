@@ -12,9 +12,10 @@ module.exports = class EventList extends CollectionView
   tagName: 'ul'
   listen:
     'flagEvent mediator':"flagEvent"
-    'click .approveAll' :"approveAll"
     'approveRiskyEvent' :'approveRiskyEvent'
     'removeEvent mediator': "removeEventFromCollection"
+  events:
+    'click .approveAll' :"approveAll"
   attach: ->
     super 
   flagEvent:(eventModel)->
@@ -22,11 +23,10 @@ module.exports = class EventList extends CollectionView
   approveRiskyEvent:(eventModel)->
     @collection.add eventModel
   approveAll:()->
-    console.log "Approving all events in the collection"
     approveIt = (item, cb)=>
       item.approve()
       cb()
-    async.each @collection.models, approveIt, (err)->
+    async.eachLimit @collection.models,5, approveIt, (err)->
       console.log err if err
   removeEventFromCollection:(eventModel)=>
     @collection.remove eventModel

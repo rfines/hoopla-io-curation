@@ -12,8 +12,8 @@ module.exports = class RiskyEventItem extends View
     'click .approveEvent': "approve"
 
   flag:()->
-    console.log "flagging event"
-    @publishEvent 'flagEvent', @model
+    @model.reject()
+    
   approve:()->
     console.log "approving event"
     @model.approve()
@@ -23,7 +23,9 @@ module.exports = class RiskyEventItem extends View
     td = super()
     td.name=@model.get('name')
     td.businessId = @model.get('business')
-    td.businessName = "Some Business"
+    td.businessName = @model.get('business').name
+    td.createUser = @model.get('createUser')?.email
+    td.riskReason = @model.get('riskReasons')?.toString()
     if @model.get('description')
       td.hasDescription = "True"
     else
@@ -32,5 +34,4 @@ module.exports = class RiskyEventItem extends View
       td.hasImage = "True"
     else
       td.hasImage = "False"
-    
     td

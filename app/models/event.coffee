@@ -77,12 +77,8 @@ module.exports = class Event extends Model
       headers: {'content-type':'appliation/json'}
       url:url
       error:(jqXHR, textStatus, errorThrown)=>
-        console.log textStatus
-        console.log jqXHR
         return false
       success: (data, textStatus, jqXHR)=>
-        console.log "in success"
-        console.log jqXHR
         @publishEvent 'removeEvent', @
   reject:()->
     url = "#{baseUrl}api/curate/event/#{@get('_id')}/reject"
@@ -92,10 +88,6 @@ module.exports = class Event extends Model
       headers: {'content-type':'appliation/json'}
       url:url
       error:(jqXHR, textStatus, errorThrown)=>
-        console.log textStatus
-        console.log errorThrown
         return false
       success: (data, textStatus, jqXHR)=>
-        console.log "in success"
-        console.log jqXHR
         @publishEvent 'removeEvent', @
