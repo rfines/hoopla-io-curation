@@ -3,9 +3,6 @@ express = require("express")
 app = express()
 port = process.env.PORT || 3005
 apiProxy = require('./server/apiProxy')
-Mandrill = require("mandrill-api").Mandrill
-process.env.MANDRILL_APIKEY = process.env.MANDRILL_APIKEY || CONFIG.email.mandrill.apiKey
-process.env.MANDRILL_USERNAME = process.env.MANDRILL_APIKEY || CONFIG.email.mandrill.apiKey
 
 app.configure ->
   app.set('view engine', 'hbs')
@@ -34,31 +31,23 @@ app.get "/robots.txt", (req, res) ->
     'Content-Type': 'text/plain'
   res.render CONFIG.robotsFile
 
-app.post "/curation/contact", (req, res) ->
-  m = new Mandrill()
-  sendOptions = 
-    message: 
-      text : "Name: #{req.body.name}\n\nMessage: #{req.body.text}"
-      subject: req.body.subject
-      from_email : req.body.email
-      to: [{email:"info@localruckus.com"}]
-  success = ->
-    res.send 200, {status: 'SUCCESS'}
-    res.end()
-  error = (err) ->
-    res.send 500, err
-    res.end()
-  console.log 'ready to send'
-  m.messages.send sendOptions, success, error
+app.post "/login", (req, res) ->
+  if req.body.username is 'curator' and req.body.password is 'cur@t0r'
+    req.session.username = 'curator'
+    res.redirect '/'
+  else
+    res.render "login.hbs"
 
 app.get "/*", (req, res) ->
-  data =
-    development: CONFIG.development
-    apiUrl : CONFIG.apiUrl
-    baseUrl : CONFIG.baseUrl
-    cloudinary : CONFIG.cloudinary
-    googleAnalytics : CONFIG.googleAnalytics
-  res.render "index.hbs", data
+  if (!req.session.username)
+    res.render "login.hbs"
+  else
+    data =
+      development: CONFIG.development
+      apiUrl : CONFIG.apiUrl
+      baseUrl : CONFIG.baseUrl
+      cloudinary : CONFIG.cloudinary
+    res.render "index.hbs", data
 
 app.listen(port);
 console.log "Started Hoopla-Io-Curation Interface - http://localhost:#{port}"
