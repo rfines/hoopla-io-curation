@@ -23,8 +23,8 @@ module.exports = class EventItem extends View
   getTemplateData: ->
     td = super()
     td.name=@model.get('name')
-    td.businessId = @model.get('business')
-    td.businessName = "Some Business"
+    td.businessName = @model.get('business')?.name
+    td.userEmail = @model.get('createUser')?.email
     if @model.get('description')
       td.hasDescription = "True"
     else
@@ -33,6 +33,7 @@ module.exports = class EventItem extends View
       td.hasImage = "True"
     else
       td.hasImage = "False"
+    td.riskReason = @model.get('riskReasons').toString()
     ###
     td.dateText = @model.dateDisplayText()
     td.startTimeText = "#{@model.nextOccurrence()?.format("h:mm A")} - #{@model.nextOccurrenceEnd()?.format("h:mm A")}"

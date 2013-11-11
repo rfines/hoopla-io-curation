@@ -13,6 +13,8 @@ module.exports = class RiskyEventList extends CollectionView
   listen:
     'flagEvent mediator':"flagEvent"
     'approveRiskyEvent mediator':"approveEvent"
+    'click .reject-all-btn': "rejectAll"
+    'removeEvent mediator': "removeEventFromCollection"
   attach: ->
     super
   getTemplateData: ->
@@ -20,4 +22,8 @@ module.exports = class RiskyEventList extends CollectionView
   flagEvent:(eventModel)->
     @collection.add eventModel
   approveEvent:(eventModel)->
+    @collection.remove eventModel
+  rejectAll:()->
+    console.log "rejecting all events"
+  removeEventFromCollection:(eventModel)=>
     @collection.remove eventModel

@@ -2,9 +2,15 @@
   <div class="col-xs-8 col-md-9">
     <dl class="dl-horizontal">
       <dt>Event Name</dt><dd>{{name}}</dd>
+      {{#if businessName}}
       <dt>Business Name</dt><dd>{{businessName}}</dd>
+      {{/if}}
+      {{#if userEmail}}
+      <dt>Created User</dt><dd>{{userEmail}}</dd>
+      {{/if}}
       <dt>Has Description</dt><dd>{{hasDescription}}</dd>
       <dt>Has Image</dt><dd>{{hasImage}}</dd>
+      <dt>Assessment</dt><dd>{{riskReason}}</dd>
     </dl>
   </div>
   <div class="btn-group actions">

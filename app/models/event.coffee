@@ -70,12 +70,32 @@ module.exports = class Event extends Model
     else
       return undefined
   approve:()->
-    @set 'curatorApproved', true
-    @save({}, {success:(err)->
-      console.log err if err
-    })
+    url = "#{baseUrl}api/curate/event/#{@get('_id')}/approve"
+    $.ajax
+      type:"POST"
+      contentType:"application/json" 
+      headers: {'content-type':'appliation/json'}
+      url:url
+      error:(jqXHR, textStatus, errorThrown)=>
+        console.log textStatus
+        console.log jqXHR
+        return false
+      success: (data, textStatus, jqXHR)=>
+        console.log "in success"
+        console.log jqXHR
+        @publishEvent 'removeEvent', @
   reject:()->
-    @set 'curatorApproved', false
-    @save({}, {success:(err)->
-      console.log err if err
-    })
+    url = "#{baseUrl}api/curate/event/#{@get('_id')}/reject"
+    $.ajax
+      type:"POST"
+      contentType:"application/json"
+      headers: {'content-type':'appliation/json'}
+      url:url
+      error:(jqXHR, textStatus, errorThrown)=>
+        console.log textStatus
+        console.log errorThrown
+        return false
+      success: (data, textStatus, jqXHR)=>
+        console.log "in success"
+        console.log jqXHR
+        @publishEvent 'removeEvent', @

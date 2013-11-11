@@ -14,6 +14,7 @@ module.exports = class EventList extends CollectionView
     'flagEvent mediator':"flagEvent"
     'click .approveAll' :"approveAll"
     'approveRiskyEvent' :'approveRiskyEvent'
+    'removeEvent mediator': "removeEventFromCollection"
   attach: ->
     super 
   flagEvent:(eventModel)->
@@ -23,13 +24,9 @@ module.exports = class EventList extends CollectionView
   approveAll:()->
     console.log "Approving all events in the collection"
     approveIt = (item, cb)=>
-      item.set 'curatorApproved', true
-      item.save({}, {success:(err)=>
-        if err
-          console.log err
-          cb err
-        else
-          cb() if cb
-      })
+      item.approve()
+      cb()
     async.each @collection.models, approveIt, (err)->
       console.log err if err
+  removeEventFromCollection:(eventModel)=>
+    @collection.remove eventModel
