@@ -1,4 +1,3 @@
-Controller = require 'controllers/base/controller'
 Interface = require 'views/event/interface'
 Events = require 'models/events'
 SiteView = require 'views/site-view'
