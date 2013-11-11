@@ -1,6 +1,5 @@
 {
   "development" : true,
-  "hooplaUrl" : "http://localhost:3000/",
   "apiUrl" : "http://localhost:8080",
   "apiKey" :"XVoZHNOJ2kFdrApkq4wM",
   "baseUrl":"http://localhost:3000/",
@@ -8,14 +7,5 @@
   "cloudinary" : {
     "cloudName" : "hu9ncnicw"
   },
-  "googleAnalytics" : {
-    "code" : "UA-26299789-3"
-  },
-  "email" : {
-    "mandrill" : {
-      "apiKey" : "8YzdtsF-xJYq2fsB21DVrQ",
-      "username" : "info@hoopla.io"
-    }
-  },
-  "robotsFile" : "stage.robots.hbs"
+  "robotsFile" : "robots.hbs"
 }
