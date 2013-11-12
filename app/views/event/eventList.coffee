@@ -26,7 +26,7 @@ module.exports = class EventList extends CollectionView
     approveIt = (item, cb)=>
       item.approve()
       cb()
-    async.eachLimit @collection.models,5, approveIt, (err)->
+    async.eachLimit @collection.models,1, approveIt, (err)->
       console.log err if err
   removeEventFromCollection:(eventModel)=>
     @collection.remove eventModel

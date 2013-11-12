@@ -3,7 +3,7 @@ View = require 'views/base/view'
 
 module.exports = class RiskyEventItem extends View
   autoRender: true
-  className: 'eventItem'
+  className: 'eventItem li-big'
   template: template
   mapped: false
   tagName:'li'
