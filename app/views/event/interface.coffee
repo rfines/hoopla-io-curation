@@ -25,6 +25,7 @@ module.exports = class InterfaceView extends View
             @stopLoading()
             if businesses.length is 0
               @$el.find(".noBusinesses").show()
+            @$el.find(".business-count").html("Total Businesses: #{businesses.models.length}")
             @subview('businessList', new BusinessList({container:@$el.find('.businessList'), collection:businesses}))
             @subview('toCurate', new EventListView({container: @$el.find('.itemsToCurate'),collection:@collection}))
             @subview('riskyItems',new RiskyEventListView({container:@$el.find('.riskyItems'),collection:new Events()}))
