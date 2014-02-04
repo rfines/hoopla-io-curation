@@ -1,0 +1,47 @@
+<div class="row" id="{{_id}}">
+  <div class="bg-success">
+    <div class="alert alert-success bg-success" id="success_{{_id}}" style="display:none;">Business successfully transfered!</div>
+  </div>
+  <div class="col-xs-8 col-md-9">
+    <dl class="dl-horizontal">
+      <dt>Business Name</dt><dd>{{name}}</dd>
+      <dt>Address</dt><dd>{{location}}</dd>
+    </dl>
+  </div>
+  <div class="col-xs-3 col-md-3 btn-group actions">
+    <button type="button" class="btn btn-warning deleteBusiness">Delete</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_{{_id}}">Transfer</button>
+  </div>
+
+</div>
+<div class="modal fade" id="modal_{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Transfer this Business</h4>
+      </div>
+      <div class="modal-body">
+        <div class="well">
+          <div class="center-block" id="{{_id}}_error" style="display:none;"><p id="{{_id}}_error_span" class="bg-danger"></p></div>
+          <div class="row current-owners">
+            <dl><dt>Current Owners:</dt><dd><span class="ownersDiv"></span></dd></dl>          
+          </div>
+          <div class="row new-owner">
+            <form role="form">
+              <div class="form-group">
+                <label for="newOwnerEmail">New Owner Email address</label>
+                <input type="email" class="form-control newOwnerEmail" id="newOwnerEmail" placeholder = "Enter the new Owners email address"/>
+                <p class="help-block emailerror" id="{{_id}}_email_error" style="display:none;">Please enter a valid email address.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary transferButton">Transfer</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -9,5 +9,15 @@ module.exports = class HeaderView extends View
 
   initialize: ->
     super
-
+  events:
+    "click .businessesLink":"showBusinesses"
+    "click .eventsLink": "hideBusinesses"
+  showBusinesses:()=>
+    @$el.find(".businessesLink").addClass("active")
+    @$el.find(".eventsLink").removeClass("active")
+    @publishEvent 'showBusinesses'
+  hideBusinesses:()=>
+    @$el.find(".businessesLink").removeClass("active")
+    @$el.find(".eventsLink").addClass("active")
+    @publishEvent 'hideBusinesses'
     

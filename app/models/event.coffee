@@ -18,7 +18,7 @@ module.exports = class Event extends Model
     $.ajax
       type:"POST"
       contentType:"application/json" 
-      headers: {'content-type':'appliation/json'}
+      headers: {'content-type':'application/json'}
       url:url
       error:(jqXHR, textStatus, errorThrown)=>
         return false
@@ -29,7 +29,7 @@ module.exports = class Event extends Model
     $.ajax
       type:"POST"
       contentType:"application/json"
-      headers: {'content-type':'appliation/json'}
+      headers: {'content-type':'application/json'}
       url:url
       error:(jqXHR, textStatus, errorThrown)=>
         return false
